@@ -1,4 +1,4 @@
-<?php require "../app/functions/pages.php"; ?>
+<?php require "../bootstrap.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,16 @@
 </head>
 <body>
     <div class="container">
-        <?php require load();?>    
+        <?php 
+            try {
+                require load();
+            } catch (Exception $ex) {
+                echo $ex->getMessage();
+            }
+        
+            
+        
+        ?>    
     </div>    
 </body>
 </html>
