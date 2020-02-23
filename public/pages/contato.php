@@ -1,6 +1,8 @@
 <h2>Contato</h2>
 
-<form action="/pages/forms/contato.php" method="GET" role="form">
+<?=get('message');?>
+
+<form action="/pages/forms/contato.php" method="POST" role="form">
     <!-- <legend>Formulário de Contato</legend> -->
 
     <div class="form-group">

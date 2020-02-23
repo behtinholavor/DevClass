@@ -1,7 +1,6 @@
 <?php
 
 function validate(array $fields) {
-
     $request = request();
     $validate = [];
     foreach ($fields as $field => $type) {
@@ -17,7 +16,16 @@ function validate(array $fields) {
                 break;
         }
     }
-
     return (object) $validate;
 }
 
+function isEmpty() {
+    $request = request();
+    $empty = false;
+    foreach ($request as $key => $tvalue) {
+        if(empty($request[$key])) {
+            $empty = true;
+        }                
+    }
+    return $empty;
+}
