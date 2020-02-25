@@ -14,13 +14,14 @@ $validate = validate([
     'message' => 's'
 ]);
 
-#dd($validate->name);
 $data = [
     'quem' => $validate->email,
     'para' => 'robertinhou@live.com',
     'mensagem' => $validate->message,
     'assunto' => $validate->subject
 ];
+
+//dd(send($data));
 
 if(send($data)) {
     flash('message', 'Email enviado com sucesso!', 'success');
