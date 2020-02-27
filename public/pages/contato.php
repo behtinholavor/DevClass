@@ -1,9 +1,9 @@
-<h2>Contato</h2>
+<!-- <h2>Contato</h2> -->
 
 <?=get('message');?>
 
 <form action="/pages/forms/contato.php" method="POST" role="form">
-    <!-- <legend>Formulário de Contato</legend> -->
+    <legend>Contato</legend>
 
     <div class="form-group">
         <label for="">Nome</label>

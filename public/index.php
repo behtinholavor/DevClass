@@ -10,7 +10,7 @@
     <title>DevClass</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container">      
         <?php 
             try {
                 require load();
