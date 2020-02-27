@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  surname VARCHAR(100) NOT NULL,
+  email VARCHAR(500) NOT NULL,    
+  passwrod VARCHAR(255) NOT NULL,      
+  CONSTRAINT pk_users PRIMARY KEY (id),
+  CONSTRAINT uk_users UNIQUE KEY (email) 
+);
+
+SELECT * FROM users;

@@ -21,8 +21,6 @@ $data = [
     'assunto' => $validate->subject
 ];
 
-//dd(send($data));
-
 if(send($data)) {
     flash('message', 'Email enviado com sucesso!', 'success');
     redirect("contato");
