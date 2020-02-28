@@ -20,3 +20,7 @@ function redirect($target) {
 function redirectToHome() {
     return header("location:/");
 }
+
+function info() {
+    phpinfo();
+}

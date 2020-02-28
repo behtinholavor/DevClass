@@ -1,5 +1,6 @@
+<?=get('message');?>
 
-<form action="" method="POST" role="form">
+<form action="/pages/forms/usuario.php" method="POST" role="form">
     <legend>Usuário</legend>
 
     <div class="form-group">
@@ -22,5 +23,5 @@
         <input name="password" type="password" class="form-control" placeholder="Escolha uma senha">
     </div>
 
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-danger">Salvar</button>
 </form>

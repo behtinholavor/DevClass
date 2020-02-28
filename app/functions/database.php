@@ -8,10 +8,19 @@ function connect(){
     return $pdo;
 }
 
-function create($table, $fields){
-    //$pdo = connect();
-    dd($fields);
-
+function create($table, $fields){    
+    if(!is_array($fields)){
+        $fields = (array) $fields;
+    }
+    
+    $sql = "INSERT INTO {$table} (";
+    $sql = $sql .implode(', ', array_keys($fields));
+    $sql = $sql . ") VALUES (:";
+    $sql = $sql .implode(', :', array_keys($fields)).")";
+    
+    $pdo = connect();    
+    $insert = $pdo->prepare($sql);
+    return $insert->execute($fields);    
 }
 
 function update(){

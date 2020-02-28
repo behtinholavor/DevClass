@@ -4,22 +4,22 @@ require "../../../bootstrap.php";
 
 if(isEmpty()) {   
     flash('message', 'Preencha todos os campos!');
-    redirect("contato");
+    redirect("usuario");
+} else {
+    $validate = validate([
+        'name' => 's',
+        'surname' => 's',
+        'email' => 'e',
+        'password' => 's'
+    ]);
+    
+    $cadastrado = create('users', $validate);
+    if($cadastrado) {
+        flash('message', 'Usuário cadastrado com sucesso!', 'success');
+        
+    } else {
+        flash('message', 'Erro ao cadastrar usuário!');
+    }
+    return redirect("usuario");    
 }
 
-$validate = validate([
-    'name' => 's',
-    'surname' => 's',
-    'email' => 'e',
-    'password' => 's'
-]);
-
-$cadastrado = create('user', $validate);
-
-// if($cadastrado) {
-//     flash('message', 'Usuário cadastrado com sucesso!', 'success');
-//     return redirect("usuario");
-// }
-
-// flash('message', 'Erro ao cadastrar usuário!');
-// return redirect("usuario");

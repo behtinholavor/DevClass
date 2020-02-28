@@ -5,9 +5,8 @@ CREATE TABLE users (
   name VARCHAR(100) NOT NULL,
   surname VARCHAR(100) NOT NULL,
   email VARCHAR(500) NOT NULL,    
-  passwrod VARCHAR(255) NOT NULL,      
+  password VARCHAR(255) NOT NULL,      
   CONSTRAINT pk_users PRIMARY KEY (id),
   CONSTRAINT uk_users UNIQUE KEY (email) 
 );
 
-SELECT * FROM users;
