@@ -23,6 +23,14 @@ function create($table, $fields){
     return $insert->execute($fields);    
 }
 
+function all($table){
+    $pdo = connect();    
+    $sql = "SELECT * FROM {$table}";   
+    $list = $pdo->query($sql);
+    $list->execute();
+    return $list->fetchAll();
+}
+
 function update(){
 
 }

@@ -16,10 +16,11 @@ if(isEmpty()) {
     $cadastrado = create('users', $validate);
     if($cadastrado) {
         flash('message', 'Usuário cadastrado com sucesso!', 'success');
-        
+        return redirectToHome();        
     } else {
         flash('message', 'Erro ao cadastrar usuário!');
+        return redirect("usuario");
     }
-    return redirect("usuario");    
+    
 }
 
