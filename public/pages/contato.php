@@ -23,6 +23,8 @@
         <textarea cols="30" rows="10" class="form-control" name="message" placeholder="Mensagem"></textarea>
     </div>
 
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <div class="btn-group" role="group" aria-label="">
+        <button formaction="/pages/forms/back.php" type="hidden" class="btn btn-danger">Voltar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>    
+    </div>
 </form>

@@ -23,5 +23,8 @@
         <input name="password" type="password" class="form-control" placeholder="Escolha uma senha">
     </div>
 
-    <button type="submit" class="btn btn-danger">Salvar</button>
+    <div class="btn-group" role="group" aria-label="">
+        <button formaction="/pages/forms/back.php" type="hidden" class="btn btn-danger">Voltar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>    
+    </div>
 </form>
