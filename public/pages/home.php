@@ -1,3 +1,5 @@
+<?=get('message');?>
+
 <div class="container">
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="?page=usuario">Usuário</a>
@@ -26,8 +28,8 @@
           <td><?=$user->name?></td>
           <td><?=$user->surname?></td>
           <td><?=$user->email?></td>
-          <td><a class="btn btn-success" href="/?page=usuario_edit&id=<?=$user->id;?>">Editar</a></td>
-          <td><a class="btn btn-danger"  href="">Deletar</a></td>
+          <td><a class="btn btn-success" href="/?page=usuario&id=<?=$user->id;?>">Editar</a></td>
+          <td><a class="btn btn-danger"  href="/?page=delete&id=<?=$user->id;?>">Deletar</a></td>
         </tr>
         <?php endforeach; ?>
       

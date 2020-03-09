@@ -1,0 +1,3 @@
+C:\_projects\personal\web\devclass\public\assets\sql
+
+C:\_projects\personal\web\devclass\public\assets\txt

@@ -22,10 +22,26 @@ function validate(array $fields) {
 function isEmpty() {
     $request = request();
     $empty = false;
-    foreach ($request as $key => $tvalue) {
-        if(empty($request[$key])) {
+    foreach ($request as $key => $value) {
+        if($key <> 'id' && empty($request[$key])) {
             $empty = true;
         }                
     }
     return $empty;
+}
+
+function loadId() {
+    $id = isset($_GET['id']) ? $_GET['id'] : "0";    
+    //dd($id);
+    //$id = $_GET['id'] || ? $_GET['id'] : "0";
+    //$id = ($id == "") ? "0" : $id; 
+    return $id;
+}
+
+function validId(&$id) {    
+    $state = false; 
+    $id = (($id == null) || ($id == '')) ? '0' : $id;    
+    $int = intval($id);
+    $state = ($int > 0) ? true : false;    
+    return $state;
 }

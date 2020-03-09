@@ -14,12 +14,13 @@ function create($table, $fields){
     }
     
     $sql = "INSERT INTO {$table} (";
-    $sql = $sql .implode(', ', array_keys($fields));
-    $sql = $sql . ") VALUES (:";
-    $sql = $sql .implode(', :', array_keys($fields)).")";
-    
+    $sql .= implode(', ', array_keys($fields));
+    $sql .= ") VALUES (:";
+    $sql .= implode(', :', array_keys($fields)).")";
+    //dd($sql);
     $pdo = connect();    
     $insert = $pdo->prepare($sql);
+    //dd($fields);
     return $insert->execute($fields);    
 }
 
@@ -31,14 +32,44 @@ function all($table){
     return $list->fetchAll();
 }
 
-function update(){
+function update($table, $fields, $where){
+    if(!is_array($fields)){
+        $fields = (array) $fields;
+    }
+        
+    $data = array_map(function($field){
+        return "{$field} =:{$field}";
+    }, array_keys($fields));
 
+    $pdo = connect();
+    $sql = "UPDATE {$table} SET ";
+    $sql .= implode(', ', $data);
+    $sql .= " WHERE {$where[0]} =:{$where[0]}";            
+    //dd($sql);
+    $data = array_merge($fields, [where[0] => where[1]]);
+    $update = $pdo->prepare($sql);
+    //dd($data);
+    $update->execute($data);
+
+    return $update->rowCount();
 }
 
-function find(){
+function find($table, $field, $value){
+    $pdo = connect();
+    $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
 
+    $sql = "SELECT * FROM {$table} WHERE {$field} = :{$field}";       
+    $find = $pdo->prepare($sql);
+    $find->bindValue($field, $value);
+    $find->execute();
+    return $find->fetch();
 }
 
-function delete(){
+function delete($table, $field, $value){
+    $pdo = connect();
+    $sql = "DELETE FROM {$table} WHERE {$field}";
+    $delete = $pdo->prepare($sql);
+    $delete->bindValue($field, $value);
+    return $delete->execute();
 
 }
