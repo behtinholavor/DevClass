@@ -17,16 +17,16 @@ function create($table, $fields){
     $sql .= implode(', ', array_keys($fields));
     $sql .= ") VALUES (:";
     $sql .= implode(', :', array_keys($fields)).")";
-    //dd($sql);
+
     $pdo = connect();    
     $insert = $pdo->prepare($sql);
-    //dd($fields);
     return $insert->execute($fields);    
 }
 
-function all($table){
-    $pdo = connect();    
+function all($table){        
     $sql = "SELECT * FROM {$table}";   
+    
+    $pdo = connect();
     $list = $pdo->query($sql);
     $list->execute();
     return $list->fetchAll();
@@ -45,12 +45,11 @@ function update($table, $fields, $where){
     $sql = "UPDATE {$table} SET ";
     $sql .= implode(', ', $data);
     $sql .= " WHERE {$where[0]} =:{$where[0]}";            
-    //dd($sql);
+
     $data = array_merge($fields, [where[0] => where[1]]);
     $update = $pdo->prepare($sql);
-    //dd($data);
-    $update->execute($data);
 
+    $update->execute($data);
     return $update->rowCount();
 }
 
@@ -67,10 +66,8 @@ function find($table, $field, $value){
 
 function delete($table, $field, $value){
     $pdo = connect();
-    $sql = "DELETE FROM {$table} WHERE {$field}";
-    dd($sql);
+    $sql = "DELETE FROM {$table} WHERE {$field} =:{$field}";
     $delete = $pdo->prepare($sql);
     $delete->bindValue($field, $value);    
     return $delete->execute();
-
 }

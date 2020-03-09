@@ -31,10 +31,7 @@ function isEmpty() {
 }
 
 function loadId() {
-    $id = isset($_GET['id']) ? $_GET['id'] : "0";    
-    //dd($id);
-    //$id = $_GET['id'] || ? $_GET['id'] : "0";
-    //$id = ($id == "") ? "0" : $id; 
+    $id = isset($_GET['id']) ? $_GET['id'] : "0";     
     return $id;
 }
 
